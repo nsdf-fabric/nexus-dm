@@ -6,6 +6,8 @@ from concurrent.futures import ThreadPoolExecutor
 from concurrent.futures import as_completed
 from rich.progress import Progress
 
+from .config import get_endpoint
+
 MID_PATTERN = r"^\d{8}_\d{4}_F\d{4}$"
 FILE_PATTERN = r"^\d{8}_\d{4}_F\d{4}\.mid\.gz$"
 
@@ -18,6 +20,25 @@ def isvalid_midfile(filename: str) -> bool:
     filename(str): the filename to check
     """
     return filename != "" and (re.match(MID_PATTERN, filename) != None or re.match(FILE_PATTERN, filename) != None)
+
+
+def expand_prefix(prefix: str, dataset) -> list[str]:
+    """
+    Expand a filename prefix into every dataset entry that starts with it
+    ----------------------------
+    Parameters
+    ----------
+    prefix(str): the filename prefix, i.e, 07180808_1558
+    dataset: the list of dataset entries where the first element is the filename
+
+    Returns
+    -------
+    list[str]: the full filenames matching the prefix, empty if none match
+    """
+    if not prefix:
+        return []
+
+    return [entry[0] for entry in dataset if entry[0].startswith(prefix)]
 
 
 def download_routine(midfile: str, progress: Progress, output_dir: str) -> tuple[str, Exception | None]:
@@ -59,7 +80,7 @@ def download_dataset(midfile: str, progress: Progress, output_dir: str):
     if os.path.exists(local_path):
         return
 
-    response = requests.get("https://intersect.nationalsciencedatafabric.org/nexus/api/v1/darkmatter/gen-url", params={"filename" : midfile})
+    response = requests.get(get_endpoint(), params={"filename" : midfile})
 
     if response.status_code != 200:
         typer.secho("could not retrieve object resource", fg=typer.colors.RED)

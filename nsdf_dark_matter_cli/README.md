@@ -17,6 +17,12 @@ nsdf-cli ls
 nsdf-cli download 07180827_0000_F0001
 ```
 
+Download all series matching a prefix with the `--all` flag:
+
+```bash
+nsdf-cli download 07180808_1558 --all
+```
+
 Download multiple series
 
 ```txt
