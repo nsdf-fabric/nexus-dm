@@ -1,5 +1,5 @@
 site_name: NEXUS-DM Documentation
-repo_url: https://github.com/nsdf-fabric/nsdf-slac
+repo_url: https://github.com/nsdf-fabric/nexus-dm
 theme:
   name: material
   logo: assets/team/nsdflogo.png

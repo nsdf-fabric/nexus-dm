@@ -99,7 +99,7 @@ To install the library via pip, run the following command:
 To install the library from releases, download the `wheel` file.
 
 ```bash
-wget https://github.com/nsdf-fabric/nsdf-slac/releases/download/v0.1.0/nsdf_dark_matter-0.1.0-py3-none-any.whl
+wget https://files.pythonhosted.org/packages/08/d7/dc5acbbade226b3a15dfd2732084752a6251660b538c5378fb8b1ea63fbc/nsdf_dark_matter-0.3.1-py3-none-any.whl
 ```
 
 === "uv (recommended)"
@@ -107,14 +107,14 @@ wget https://github.com/nsdf-fabric/nsdf-slac/releases/download/v0.1.0/nsdf_dark
     !!! info "uv (recommended)"
 
         ```bash
-        uv pip install nsdf_dark_matter-0.1.0-py3-none-any.whl
+        uv pip install nsdf_dark_matter-0.3.1-py3-none-any.whl
         ```
 
 === "Conda"
 
     !!! info "Conda"
         ```bash
-        pip install nsdf_dark_matter-0.1.0-py3-none-any.whl
+        pip install nsdf_dark_matter-0.3.1-py3-none-any.whl
         ```
 
 === "Python venv"
@@ -122,7 +122,7 @@ wget https://github.com/nsdf-fabric/nsdf-slac/releases/download/v0.1.0/nsdf_dark
     !!! info "Python venv"
 
         ```bash
-        pip install nsdf_dark_matter-0.1.0-py3-none-any.whl
+        pip install nsdf_dark_matter-0.3.1-py3-none-any.whl
         ```
 
 ---

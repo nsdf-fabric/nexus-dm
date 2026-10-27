@@ -1,6 +1,6 @@
 # Opening Issues
 
-Do you have a feature in mind? or have you spotted a bug? issues can be opened on our repo here: [https://github.com/nsdf-fabric/nsdf-slac/issues](https://github.com/nsdf-fabric/nsdf-slac/issues). Below is a step by step guide
+Do you have a feature in mind? or have you spotted a bug? issues can be opened on our repo here: [https://github.com/nsdf-fabric/nexus-dm/issues](https://github.com/nsdf-fabric/nexus-dm/issues). Below is a step by step guide
 on how to file an issue.
 
 !!! danger "reporting security vulnerabilities"
@@ -13,7 +13,7 @@ Before opening an issue, please search for **pre-existing issues** which may des
 
 !!! note "1. Navigate to the Repository Link"
 
-    First, you will need to navigate to the repository link here: [https://github.com/nsdf-fabric/nsdf-slac/issues](https://github.com/nsdf-fabric/nsdf-slac/issues). then, click on **new issue**.
+    First, you will need to navigate to the repository link here: [https://github.com/nsdf-fabric/nexus-dm/issues](https://github.com/nsdf-fabric/nexus-dm/issues). then, click on **new issue**.
 
     ![github issues interface, creating an issue with the new issue button](assets/team/oi_step1.png)
 

@@ -1,6 +1,6 @@
 ### 📄 Documentation
 
-These steps will help you get started with contributing to the [NSDF Dark Matter documentation](https://nsdf-fabric.github.io/nsdf-slac/)
+These steps will help you get started with contributing to the [NSDF Dark Matter documentation](https://nsdf-fabric.github.io/nexus-dm/)
 
 #### Virtual Environment
 
