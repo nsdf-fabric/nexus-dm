@@ -4,7 +4,10 @@ import panel as pn
 import pandas as pd
 import psycopg
 from decimal import Decimal
+import asyncio
+from panel.chat import ChatInterface
 
+pn.extension('perspective')
 pn.extension('ipywidgets')
 pn.extension('tabulator')
 pn.extension(sizing_mode='stretch_width')
@@ -118,6 +121,31 @@ class NSDFCatalogDashboard:
         self.trigger_config_display = pn.pane.Markdown("")
         self.run_context_display = pn.pane.Markdown("")
 
+        # natural language search ui
+        self.chat = pn.chat.ChatInterface(
+                    callback=self.test_llm_search,
+                    user="User",
+                    callback_user="Search Assistant",
+                    avatar="🧑‍🔬",
+                    callback_avatar="🤖",
+                    height= 500,
+                    show_undo=False,
+                    widgets=[
+                        pn.widgets.TextInput(
+                            placeholder="Enter text to search the NSDF metadata catalog...",
+                        ),
+                    ],
+                )
+        self.chat_card = pn.Card(
+            self.chat,
+            collapsed=False,
+            collapsible=False, # keeps format as a header, but not collapsible box
+            title="Natural Language Search",
+            header_color="#ffffff",
+            header_background="#005587",
+            active_header_background="#0072B5",
+        )
+
         # query/results
         self.query = pn.widgets.input.TextAreaInput(height=160)
         self.status = pn.widgets.input.StaticText(value="Ready to run a query")
@@ -147,36 +175,54 @@ class NSDFCatalogDashboard:
             self.schema_pane = pn.pane.Markdown(
             "Schema image not found at catalog/umn_catalog.png")
 
-        self.material.main.append(
-            pn.Column(
-                pn.pane.Markdown("## NSDF Metadata Explorer"),
 
-                pn.pane.Markdown("### 1. Metadata Schema"),
-                self.schema_centered,
-                pn.Spacer(height=20),
+        # Tab 1: Metadata Explorer (main)
+        explorer_tab = pn.Column(
+            pn.pane.Markdown("## NSDF Metadata Explorer"),
+            pn.pane.Markdown("### 1. Metadata Schema"),
+            self.schema_centered,
+            pn.Spacer(height=20),
 
-                pn.pane.Markdown("### 2. Filter Metadata"),
-                pn.Row(
-                    pn.Column(pn.pane.Markdown("**Filter by Source**"), self.source_filters),
-                    pn.Column(pn.pane.Markdown("**Filter by Shield**"), self.shield_filters),
-                    pn.Column(pn.pane.Markdown("**Filter by Trigger**"), self.trigger_filters),
-                    ),
-
-                pn.pane.Markdown("### 3. Filtered Metadata Results"),
-                pn.Row(self.query, self.run_button),
-                self.status,
-                self.tabulator,
-                self.series_download,
-
-                pn.Spacer(height=30),
-
-                pn.pane.Markdown("### 4. Inspect Config / Run Context"),
-                pn.Row(
-                    pn.Column(self.source_inspect_dropdown, self.source_config_display),
-                    pn.Column(self.shield_inspect_dropdown, self.shield_config_display),
-                    pn.Column(self.trigger_inspect_dropdown, self.trigger_config_display),
-                    pn.Column(self.run_inspect_dropdown, self.run_context_display),
+            pn.pane.Markdown("### 2. Filter Metadata"),
+            pn.Row(
+                pn.Column(pn.pane.Markdown("**Filter by Source**"), self.source_filters),
+                pn.Column(pn.pane.Markdown("**Filter by Shield**"), self.shield_filters),
+                pn.Column(pn.pane.Markdown("**Filter by Trigger**"), self.trigger_filters),
                 ),
+
+            pn.pane.Markdown("### 3. Filtered Metadata Results"),
+            pn.Row(self.query, self.run_button),
+            self.status,
+            self.tabulator,
+            self.series_download,
+
+            pn.Spacer(height=30),
+
+            pn.pane.Markdown("### 4. Inspect Config / Run Context"),
+            pn.Row(
+                pn.Column(self.source_inspect_dropdown, self.source_config_display),
+                pn.Column(self.shield_inspect_dropdown, self.shield_config_display),
+                pn.Column(self.trigger_inspect_dropdown, self.trigger_config_display),
+                pn.Column(self.run_inspect_dropdown, self.run_context_display),
+            ),
+            height=750,
+            scroll=True,
+            sizing_mode="stretch_width",
+        )
+        # Tab 2: Chatbot Search Assistant
+        chat_tab = pn.Column(
+            pn.pane.Markdown("## Chatbot Search Assistant"),
+            self.chat_card,
+            height=750,
+            scroll=True,
+            sizing_mode="stretch_width",
+        )
+
+        self.material.main.append(
+            pn.Tabs(
+                ("Catalog Explorer", explorer_tab),
+                ("Chatbot", chat_tab),
+                stylesheets=[sticky_tabs_css]
             )
         )
 
@@ -186,6 +232,18 @@ class NSDFCatalogDashboard:
         self.show_run_context()
         self.refresh()
 
+    '''
+        test_llm_search: a placeholder for testing the LLM search UI. Simulates token-by-token LLM responses. 
+        Needs to be implmented with actual search and LLM integration once complete
+    '''
+    async def test_llm_search(self, contents, user,instance):
+        response = f"Test reply to '{contents}'"
+        accumulated_response = ""
+        tokens = response.split()
+        for token in tokens:
+            await asyncio.sleep(0.2)  # Delay for test simulation, remove later
+            accumulated_response += token + " "
+            yield accumulated_response         # search asistant just repeats user's input (token-by-token) for testing.
 
     def _trigger_types(self, cfg):
         """Extract trigger types from trigger config JSON"""
@@ -478,7 +536,18 @@ ORDER BY m.timestamp DESC
 
         return path
     
-
+# Styles for tabs 
+sticky_tabs_css = """
+        .nav-tabs, .bk-header {
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 1000 !important;
+            background-color: var(--panel-background-color, #ffffff) !important;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        """
 # //////////////////////////////////////////////////////////////////////////////////////
 if True:
     exp = NSDFCatalogDashboard()
