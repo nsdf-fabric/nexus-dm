@@ -16,7 +16,7 @@ Contributions are always welcome, no matter how large or small. Before contribut
 
 For all the components of the project [CLI](./cli.md), [Library](./library.md), and [Dashboard](./dashboard.md) you will need to follow the next steps:
 
-1. [Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) the [nsdf-slac](https://github.com/nsdf-fabric/nsdf-slac) repository.
+1. [Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) the [nexus-dm](https://github.com/nsdf-fabric/nexus-dm) repository.
 2. Clone the forked repository to your local machine.
 
 ### Python
@@ -49,4 +49,4 @@ Read the following guides to learn about how you can contribute to Nexus-DM soft
 
 ## License
 
-By contributing to the NSDF Dark Matter project, you agree that your contributions will be licensed by a specific License. You can find this information in the [LICENSE](https://github.com/nsdf-fabric/nsdf-slac/blob/main/LICENSE) file of the nsdf-slac repository.
+By contributing to the NSDF Dark Matter project, you agree that your contributions will be licensed by a specific License. You can find this information in the [LICENSE](https://github.com/nsdf-fabric/nexus-dm/blob/main/LICENSE) file of the nexus-dm repository.

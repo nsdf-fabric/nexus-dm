@@ -4,7 +4,7 @@
 
 **Nexus-DM** is a collaborative initiative between the [National Science Data Fabric](https://nationalsciencedatafabric.org/) (NSDF) and partner institutions, including the [University of Colorado Denver](https://clas.ucdenver.edu/physics/amy-roberts-phd) and the University of Minnesota. The project delivers an integrated suite of tools for accessing, visualizing, and analyzing dark matter data. By combining ease of access with scientific depth, the initiative empowers the community to accelerate discovery in dark matter research.
 
-To learn more about the background and goals of this effort, read our paper: _["The Making of a Community Dark Matter Dataset with the National Science Data Fabric"](https://arxiv.org/abs/2507.13297)_.
+To learn more about the background and goals of this effort, read our paper: _["The Making of a Community Dark Matter Dataset with the National Science Data Fabric"](https://ieeexplore.ieee.org/document/11586030)_.
 
 <img src="./assets/dashboard/nexusdashboard.png" alt="NSDF Dark Matter Dashboard" style="border: 2px solid teal;">
 

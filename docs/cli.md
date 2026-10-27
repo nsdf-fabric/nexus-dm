@@ -94,7 +94,7 @@ To install the CLI via pip, run the following command.
 To install the CLI from releases, download the `wheel` file.
 
 ```bash
-wget https://github.com/nsdf-fabric/nsdf-slac/releases/download/v0.1.0/nsdf_dark_matter_cli-0.1.0-py3-none-any.whl
+wget https://files.pythonhosted.org/packages/c5/6d/931b4a975cb7f259a2fa94942249577ca331ea669da2a15c5a017da14259/nsdf_dark_matter_cli-0.6.0-py3-none-any.whl
 ```
 
 Now, we can install the CLI by passing the wheel file with the following command:
@@ -104,7 +104,7 @@ Now, we can install the CLI by passing the wheel file with the following command
     !!! info "uv (recommended)"
 
         ```bash
-        uv pip install nsdf_dark_matter_cli-0.1.0-py3-none-any.whl
+        uv pip install nsdf_dark_matter_cli-0.6.0-py3-none-any.whl
         ```
 
 === "Conda"
@@ -112,7 +112,7 @@ Now, we can install the CLI by passing the wheel file with the following command
     !!! info "Conda"
 
         ```bash
-        pip install nsdf_dark_matter_cli-0.1.0-py3-none-any.whl
+        pip install nsdf_dark_matter_cli-0.6.0-py3-none-any.whl
         ```
 
 === "Python venv"
@@ -120,7 +120,7 @@ Now, we can install the CLI by passing the wheel file with the following command
     !!! info "Python venv"
 
         ```bash
-        pip install nsdf_dark_matter_cli-0.1.0-py3-none-any.whl
+        pip install nsdf_dark_matter_cli-0.6.0-py3-none-any.whl
         ```
 
 ---
@@ -136,6 +136,48 @@ nsdf-cli --help
 ```
 
 ![Terminal showing CLI help output with available commands: version, ls, and download](./assets/cli/cli-help.gif)
+
+### Managing global configuration
+
+The CLI supports a global configuration to set defaults, such as the output directory and download endpoint. Use the `config` command to view or update these settings.
+
+#### View current configuration
+
+```bash
+nsdf-cli config
+```
+
+This displays the current global output directory and global endpoint.
+
+#### Set a global output directory
+
+By default, idx files are downloaded to `./idx` folder relative to where the command is run. This sets the directory where downloaded files are saved by default (overriding that location).
+
+```bash
+nsdf-cli config --output-global /path/to/output
+```
+
+You can also override the global output directory on a per-download basis using the `-o` flag:
+
+```bash
+nsdf-cli download 07180827_0000_F0001 -o /path/to/output
+```
+
+#### Set a global endpoint
+
+```bash
+nsdf-cli config --endpoint https://example.com
+```
+
+This changes the global endpoint from which the CLI downloads datasets. Use this if you need to point the CLI to a different data server.
+
+#### Reset configuration
+
+```bash
+nsdf-cli config --reset
+```
+
+This resets all configuration values back to their defaults.
 
 ### Listing remote files
 
@@ -167,6 +209,14 @@ nsdf-cli download 07180827_0000_F0001
 
 ![Terminal showing the CLI download command. It downloads the file specified](./assets/cli/cli-download.gif)
 
+Want every file that shares a prefix? Pass the `--all` (or `-a`) flag and give just the prefix:
+
+```bash
+nsdf-cli download 07180808_1558 --all
+```
+
+This downloads all matching files, e.g. `07180808_1558_F0001` through `07180808_1558_F0010`.
+
 You can also download a set of files at once by providing the `-f` flag:
 
 ```bash
@@ -175,7 +225,7 @@ nsdf-cli download -f files.txt
 
 ![Terminal showing the CLI download command passing the -f flag. It downloads a set of files at the same time](./assets/cli/cli-download-multiple.gif)
 
-Downloaded files go into the idx directory, and each one gets its own subfolder based on the `mid_id`. After downloading a few datasets, your folder might look like this:
+Downloaded files go into the output directory (by default `./idx`, or the global output directory set via `config`), and each one gets its own subfolder based on the `mid_id`. After downloading a few datasets, your folder might look like this:
 
 ```console
 idx/
@@ -201,6 +251,20 @@ A `mid_id` directory is composed of the following files:
                    07180925_0000_F0001/
                                       |
                                       0000.bin
+```
+
+### Pruning downloaded series
+
+To remove all downloaded series from the global output directory:
+
+```bash
+nsdf-cli prune
+```
+
+To skip the confirmation prompt:
+
+```bash
+nsdf-cli prune --force
 ```
 
 ## Next Steps

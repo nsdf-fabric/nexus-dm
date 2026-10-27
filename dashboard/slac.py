@@ -507,7 +507,7 @@ def main():
 
     cite_button = pn.widgets.Button(name="Cite", button_type="success")
     cite_button.js_on_click(args={}, code="""
-    const w = window.open("https://nsdf-fabric.github.io/nsdf-slac/citations/", "_blank", "noopener,noreferrer");
+    const w = window.open("https://nsdf-fabric.github.io/nexus-dm/citations/", "_blank", "noopener,noreferrer");
     if(w) w.opener = null;
     """)
 

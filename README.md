@@ -7,28 +7,28 @@
 </div>
 <br>
 <p align="center">
-  <a href="https://github.com/nsdf-fabric/nsdf-slac/releases"><img src="https://img.shields.io/github/release/nsdf-fabric/nsdf-slac" alt="Latest Release"></a>
-  <a href="https://github.com/nsdf-fabric/nsdf-slac/issues"><img src="https://img.shields.io/github/issues/nsdf-fabric/nsdf-slac" alt="Github issues"></a>
-  <img src="https://img.shields.io/github/commit-activity/w/nsdf-fabric/nsdf-slac" alt="GitHub commit activity">
-   <a href="https://github.com/nsdf-fabric/nsdf-slac/actions"><img src="https://github.com/nsdf-fabric/nsdf-slac/workflows/Test/badge.svg" alt="Test Status"></a>
+  <a href="https://github.com/nsdf-fabric/nexus-dm/releases"><img src="https://img.shields.io/github/release/nsdf-fabric/nexus-dm" alt="Latest Release"></a>
+  <a href="https://github.com/nsdf-fabric/nexus-dm/issues"><img src="https://img.shields.io/github/issues/nsdf-fabric/nexus-dm" alt="Github issues"></a>
+  <img src="https://img.shields.io/github/commit-activity/w/nsdf-fabric/nexus-dm" alt="GitHub commit activity">
+   <a href="https://github.com/nsdf-fabric/nexus-dm/actions"><img src="https://github.com/nsdf-fabric/nexus-dm/workflows/Test/badge.svg" alt="Test Status"></a>
 </p>
 
 ## Overview
 
-**Nexus-DM** delivers state-of-the-art tools for accessing and analyzing dark matter data, including a web-based event visualization [dashboard](./dashboard), a [command-line interface](./nsdf_dark_matter_cli) (CLI) for data access,
-and a [library](./nsdf_dark_matter) for data manipulation. By combining ease of access with scientific depth, the initiative empowers the community to accelerate discovery in dark matter research.
+**Nexus-DM** delivers state-of-the-art tools for accessing and analyzing dark matter data, including a web-based event visualization [dashboard](https://nsdf-fabric.github.io/nexus-dm/dashboard/), a [command-line interface](https://nsdf-fabric.github.io/nexus-dm/cli/) (CLI) for data access,
+and a [library](https://nsdf-fabric.github.io/nexus-dm/library/) for data manipulation. By combining ease of access with scientific depth, the initiative empowers the community to accelerate discovery in dark matter research.
 
 ![Channel Dashboard](./docs/assets/dashboard/nexusdashboard.png)
 
 ## ⚡Quick Start
 
-To get up and running quickly, follow the step-by-step guides found in the [Nexus-DM documentation](https://nsdf-fabric.github.io/nsdf-slac/)
+To get up and running quickly, follow the step-by-step guides found in the [Nexus-DM documentation](https://nsdf-fabric.github.io/nexus-dm/)
 
 ## 🚀 Features
 
-- **Web-based visualization:** Explore midas files, isolate detector channels, and examine detailed metadata such as trigger types and timestamps, all within the browser with the [NSDF Dark Matter Dashboard](https://intersect.nationalsciencedatafabric.org/darkmatter/nexus-dashboard).
-- **Easy data access via CLI**: Effortlessly search, and download dark matter data files using the [NSDF Dark Matter CLI](./docs/cli.md).
-- **Workflow integration**: Leverage [NSDF Dark Matter Library](./docs/library.md) to load and manipulate dark matter data, enabling seamless integration into workflow pipelines, including machine learning.
+- **Web-based visualization:** Explore midas files, isolate detector channels, and examine detailed metadata such as trigger types and timestamps, all within the browser with the [NSDF Dark Matter Dashboard](https://nsdf-fabric.github.io/nexus-dm/dashboard/).
+- **Easy data access via CLI**: Effortlessly search, and download dark matter data files using the [NSDF Dark Matter CLI](https://nsdf-fabric.github.io/nexus-dm/cli/).
+- **Workflow integration**: Leverage [NSDF Dark Matter Library](https://nsdf-fabric.github.io/nexus-dm/library/) to load and manipulate dark matter data, enabling seamless integration into workflow pipelines, including machine learning.
 - **Search events**: Search for specific events using the autocomplete input.
 - **Visualization**: Visualize channel waveforms from multiple detectors.
 - **Channel isolation**: Select or deselect channels from one or more detectors.
@@ -38,20 +38,20 @@ To get up and running quickly, follow the step-by-step guides found in the [Nexu
 
 ### 📊 NSDF Dark Matter Dashboard
 
-The [NSDF Dark Matter Dashboard](https://intersect.nationalsciencedatafabric.org/darkmatter/nexus-dashboard) provides a web-based interface to visualize and explore dark matter data all within the browser. Learn about the controls that make the dashboard from [dashboard guide](./docs/dashboard.md).
+The [NSDF Dark Matter Dashboard](https://intersect.nationalsciencedatafabric.org/darkmatter/nexus-dashboard) provides a web-based interface to visualize and explore dark matter data all within the browser. Learn about the controls that make the dashboard from [dashboard guide](https://nsdf-fabric.github.io/nexus-dm/dashboard/).
 
 ### 🖥️ NSDF Dark Matter CLI
 
-The [NSDF Dark Matter CLI](./nsdf_dark_matter_cli) offers a pool of operations to access the R76 dark matter dataset. The CLI can be used as part of a workflow to download data which can
-then be analyzed with the [NSDF Dark Matter Library](https://github.com/nsdf-fabric/nsdf-slac/tree/main/nsdf_dark_matter). Learn about the CLI from [CLI guide](./docs/cli.md).
+The [NSDF Dark Matter CLI](https://nsdf-fabric.github.io/nexus-dm/cli/) offers a pool of operations to access the R76 dark matter dataset. The CLI can be used as part of a workflow to download data which can
+then be analyzed with the [NSDF Dark Matter Library](https://nsdf-fabric.github.io/nexus-dm/library/). Learn about the CLI from [CLI guide](https://nsdf-fabric.github.io/nexus-dm/cli/).
 
 ### 📚 NSDF Dark Matter Library
 
-The [NSDF Dark Matter Library](./nsdf_dark_matter) offers a pool of operations to manipulate dark matter data from getting event metadata to detector channel data acquisition. Learn about the library usage in [library guide](./docs/library.md).
+The [NSDF Dark Matter Library](https://nsdf-fabric.github.io/nexus-dm/library/) offers a pool of operations to manipulate dark matter data from getting event metadata to detector channel data acquisition. Learn about the library usage in [library guide](https://nsdf-fabric.github.io/nexus-dm/library/).
 
 ## 🤝 Contributing
 
-Contributions are always welcome, no matter how large or small. Read our [contributing guide](https://nsdf-fabric.github.io/nsdf-slac/contributing/) to learn on how you can start to contribute to the NSDF Dark Matter Initiative.
+Contributions are always welcome, no matter how large or small. Read our [contributing guide](https://nsdf-fabric.github.io/nexus-dm/contributing/) to learn on how you can start to contribute to the NSDF Dark Matter Initiative.
 
 ## Related Publications
 

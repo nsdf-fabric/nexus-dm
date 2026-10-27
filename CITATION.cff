@@ -26,9 +26,9 @@ authors:
   - family-names: Taufer 
     given-names: Michela
 title: "The Making of a Community Dark Matter Dataset with the National Science Data Fabric"
-doi: 10.48550/arXiv.2507.13297
-date-released: 2025-07-17
-url: "https://arxiv.org/abs/2507.13297"
+doi: "10.1109/MCSE.2026.3708720"
+date-released: 2026-06-30
+url: "https://ieeexplore.ieee.org/document/11586030"
 preferred-citation:
   type: article
   authors:
