@@ -1,3 +1,4 @@
+import base64
 import os
 import panel as pn
 import plotly.graph_objects as go
@@ -10,6 +11,7 @@ load_dotenv()
 FILES_VOLUME = os.getenv("FILES_VOLUME", "./idx/")
 PREFIX = os.getenv("S3_PREFIX", "rec/cdms/umn/slac/idx/")
 COLORS = ["#ff0000", "#ffff00", "#0000ff", "#ff00ff", "#00ff00", "#800080", "#00ffff"]
+ASSETS_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 def get_aws_bucket():
@@ -115,11 +117,38 @@ def main():
     spinner = pn.indicators.LoadingSpinner(value=False, visible=False, height=25, width=25)
     info = pn.pane.Markdown("")
 
-    cite = pn.widgets.Button(name="Cite", button_type="success", sizing_mode="fixed")
+    cite = pn.widgets.Button(name="Cite", button_type="success", width=70, align="center")
     cite.js_on_click(args={}, code="""
     const w = window.open("https://nsdf-fabric.github.io/nexus-dm/citations/", "_blank", "noopener,noreferrer");
     if(w) w.opener = null;
     """)
+
+    nsdf_logo = pn.pane.PNG(
+        os.path.join(ASSETS_DIR, "nsdf-logo.png"),
+        height=44,
+        sizing_mode="fixed",
+        align="center",
+        margin=(0, 12, 0, 0),
+    )
+
+    with open(os.path.join(ASSETS_DIR, "nsf.svg"), "rb") as f:
+        nsf_svg = base64.b64encode(f.read()).decode()
+
+    nsf_group = pn.pane.HTML(
+        f"""
+        <div style="position:relative;height:34px;display:flex;justify-content:center;align-items:flex-start;">
+            <img src="data:image/svg+xml;base64,{nsf_svg}" alt="NSF" style="height:34px;width:auto;display:block;">
+            <div style="position:absolute;top:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:row;align-items:center;gap:8px;font-size:10px;line-height:1.2;white-space:nowrap;">
+                <a href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2531754" target="_blank" rel="noopener noreferrer" style="color:#ffffff;">#2531754</a>
+                <a href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2609465" target="_blank" rel="noopener noreferrer" style="color:#ffffff;">#2609465</a>
+            </div>
+        </div>
+        """,
+        width=104,
+        height=34,
+        align="center",
+        margin=(0, 8, 0, 0),
+    )
 
     meta = pn.pane.HTML("""<div style="text-align:center;font-size:18px;font-weight:500;">Event Metadata</div>
 <div style="text-align:center;color:#666;">Select an event to view metadata.</div>""")
@@ -360,7 +389,10 @@ def main():
 
     template = pn.template.MaterialTemplate(
         title="Nexus DM Dashboard",
-        header=[pn.Row(cite, styles={"justify-content": "flex-end"})],
+        header=[pn.Row(
+            nsdf_logo, nsf_group, cite,
+            styles={"margin-left": "auto", "justify-content": "flex-end", "align-items": "center"},
+        )],
         sidebar=sidebar,
         main=[plot],
         sidebar_width=420,

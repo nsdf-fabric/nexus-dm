@@ -20,7 +20,7 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /usr/src/nexus-dashboard/
 
 COPY --from=builder /usr/src/nexus-dashboard/.venv /usr/src/nexus-dashboard/.venv
-COPY nexus-dashboard.py uploaded_files.txt ./
+COPY nexus-dashboard.py uploaded_files.txt nsdf-logo.png nsf.svg ./
 
 ENV PATH="/usr/src/nexus-dashboard/.venv/bin:$PATH"
 EXPOSE 8000
